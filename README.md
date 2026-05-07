@@ -38,7 +38,7 @@ A aplicação permite o gerenciamento de consultas veterinárias.
  
 ## 🧪 Testes Unitários
 
-Foram implementados testes unitários utilizando JUnit 5 e Mockito, com foco na camada de serviço da aplicação (Service Layer).
+Foram implementados testes unitários seguindo o padrão AAA ( Arrange , Act , Assert), utilizando JUnit 5 e Mockito, com foco na camada de serviço da aplicação (Service Layer).
 
 Os testes validam o comportamento da lógica de negócio isolando o repositório com mocks, garantindo independência do banco de dados.
 
