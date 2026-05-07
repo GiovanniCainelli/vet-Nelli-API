@@ -35,6 +35,26 @@ A aplicação permite o gerenciamento de consultas veterinárias.
 - DTOs → Transferência de dados
 - Exception Handler → Tratamento global de erros
 
+ 
+## 🧪 Testes Unitários
+
+Foram implementados testes unitários utilizando JUnit 5 e Mockito, com foco na camada de serviço da aplicação (Service Layer).
+
+Os testes validam o comportamento da lógica de negócio isolando o repositório com mocks, garantindo independência do banco de dados.
+
+### 📌 Cenários testados:
+
+- Validação de data inválida ao cadastrar consulta
+- Busca de consulta por ID
+- Listagem de todas as consultas
+
+### 🛠 Tecnologias utilizadas:
+- JUnit 5
+- Mockito
+- Spring Boot Test
+
+
+
 ---
 
 ## 🚀 Funcionalidades
