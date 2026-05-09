@@ -69,6 +69,32 @@ Os testes validam o comportamento da lógica de negócio isolando o repositório
 
 ---
 
+## ⚙️ Configuração do MongoDB
+
+A aplicação utiliza MongoDB Atlas.
+
+###  Opção recomendada — Variável de ambiente
+
+Defina a variável de ambiente:
+
+```bash
+MONGO_URI=mongodb+srv://USUARIO:SENHA@cluster.mongodb.net/vetnelli
+```
+
+E no `application.properties`:
+
+```properties
+spring.data.mongodb.uri=${MONGO_URI}
+```
+
+---
+
+###  Opção simples — Diretamente no application.properties
+
+```properties
+spring.data.mongodb.uri=mongodb+srv://USUARIO:SENHA@cluster.mongodb.net/vetnelli
+```
+
 ## ⚙️ Como executar o projeto
 
 ### 1. Clonar o repositório
