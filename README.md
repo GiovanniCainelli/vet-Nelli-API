@@ -78,7 +78,7 @@ A aplicação utiliza MongoDB Atlas.
 Defina a variável de ambiente:
 
 ```bash
-MONGO_URI=mongodb+srv://USUARIO:SENHA@cluster.mongodb.net/vetnelli
+MONGO_URI=mongodb+srv://USUARIO:SENHA@cluster.mongodb.net/NOME_DO_BANCO
 ```
 
 E no `application.properties`:
