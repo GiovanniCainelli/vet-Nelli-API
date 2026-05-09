@@ -4,7 +4,7 @@ API REST desenvolvida com **Java + Spring Boot** para gerenciamento de consultas
 
 ---
 
-## 📌 Sobre o projeto
+##  Sobre o projeto
 
 Este projeto tem como objetivo praticar o desenvolvimento de uma API REST utilizando Spring Boot, aplicando arquitetura em camadas e integração com banco de dados NoSQL.
 
@@ -20,7 +20,7 @@ A aplicação permite o gerenciamento de consultas veterinárias.
 
 ---
 
-## 🗄️ Banco de dados
+##  Banco de dados
 
 - 🍃 MongoDB (NoSQL)
 - Spring Data MongoDB para persistência de dados
@@ -48,7 +48,7 @@ Os testes validam o comportamento da lógica de negócio isolando o repositório
 - Busca de consulta por ID
 - Listagem de todas as consultas
 
-### 🛠 Tecnologias utilizadas:
+### Tecnologias utilizadas:
 - JUnit 5
 - Mockito
 - Spring Boot Test
@@ -57,7 +57,7 @@ Os testes validam o comportamento da lógica de negócio isolando o repositório
 
 ---
 
-## 🚀 Funcionalidades
+##  Funcionalidades
 
 - Criar consulta veterinária
 - Listar consultas
@@ -92,7 +92,7 @@ spring.data.mongodb.uri=${MONGO_URI}
 ###  Opção simples — Diretamente no application.properties
 
 ```properties
-spring.data.mongodb.uri=mongodb+srv://USUARIO:SENHA@cluster.mongodb.net/vetnelli
+spring.data.mongodb.uri=mongodb+srv://USUARIO:SENHA@cluster.mongodb.net/NOME_DO_BANCO
 ```
 
 ## ⚙️ Como executar o projeto
