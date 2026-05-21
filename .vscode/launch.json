@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-VetnelliFrontApplication<vetnelliFront>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.vetnelliFront.vetnelliFront.VetnelliFrontApplication",
+            "projectName": "vetnelliFront",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
