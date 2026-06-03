@@ -27,6 +27,8 @@ public class ConsultaMapper {
 
     }
 
+    
+
     public List<ConsultaResponse> toResponseList(List<ConsultaEntity> entity) {
 
         return entity.stream().map(this::toResponse).toList();

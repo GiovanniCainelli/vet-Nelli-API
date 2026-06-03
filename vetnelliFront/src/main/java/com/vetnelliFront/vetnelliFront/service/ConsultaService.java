@@ -48,7 +48,7 @@ public class ConsultaService {
 
     public ConsultaEntity atualizarConsulta(ConsultaEntity consultaEntity) {
 
-        validarData(consultaEntity);    
+        validarData(consultaEntity);
 
         return repository.save(consultaEntity);
 
@@ -65,12 +65,14 @@ public class ConsultaService {
         Status statusAtual = consultaBuscada.getStatus();
 
         boolean transicaoValida = (statusAtual == Status.AGENDADA && status == Status.EM_ATENDIMENTO) ||
-                (statusAtual == Status.EM_ATENDIMENTO && status == Status.FINALIZADA);
+                (statusAtual == Status.EM_ATENDIMENTO && status == Status.FINALIZADA || statusAtual == status);
 
         if (!transicaoValida) {
             throw new ConsultaException(
                     "Transição inválida: " + statusAtual + " → " + status);
         }
+
+        
 
         consultaBuscada.setStatus(status);
         return repository.save(consultaBuscada);

@@ -1,6 +1,5 @@
 package com.vetnelliFront.vetnelliFront.dto;
 
-
 import java.time.LocalDateTime;
 
 import com.vetnelliFront.vetnelliFront.enums.IdadePet;
@@ -13,23 +12,23 @@ import lombok.Data;
 
 @Data
 public class ConsultaRequest {
-    
-    @NotBlank
-    @Size(min = 2, max = 50)
+
+    @NotBlank(message = "Nome do pet é obrigatório")
+    @Size(min = 2, max = 50, message = "Nome do pet deve ter entre 2 e 50 caracteres")
     private String nomePet;
 
-    @NotNull
-    
+    @NotNull(message = "Selecione a idade do pet")
     private IdadePet idadePet;
 
-    @NotBlank
-    @Size(min = 2, max = 50)
+    @NotBlank(message = "Nome do dono é obrigatório")
+    @Size(min = 2, max = 50, message = "Nome do dono deve ter entre 2 e 50 caracteres")
     private String nomeDono;
 
-    @NotBlank
-    @Size(min = 2, max = 50)
+    @NotBlank(message = "Motivo é obrigatório")
+    @Size(min = 2, max = 50, message = "Motivo deve ter entre 2 e 50 caracteres")
     private String motivo;
 
-    @Future
+    @NotNull(message = "Data da consulta é obrigatória")
+    @Future(message = "Data inválida, não é possível agendar.")
     private LocalDateTime dataConsulta;
 }

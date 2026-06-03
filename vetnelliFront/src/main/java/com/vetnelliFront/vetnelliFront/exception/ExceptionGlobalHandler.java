@@ -1,5 +1,6 @@
 package com.vetnelliFront.vetnelliFront.exception;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ public class ExceptionGlobalHandler {
 
     @ExceptionHandler(ConsultaException.class)
     public ResponseEntity<ErrorResponse> tratarConsultaException(ConsultaException e) {
-        return ResponseEntity.badRequest().body(ErrorResponse.de(HttpStatus.BAD_REQUEST,e.getMessage()));
+        return ResponseEntity.badRequest().body(ErrorResponse.de(HttpStatus.BAD_REQUEST, e.getMessage()));
 
     }
 
@@ -27,7 +28,7 @@ public class ExceptionGlobalHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String,String>> tratarMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public ResponseEntity<ErrorResponse> tratarMethodArgumentNotValidException(MethodArgumentNotValidException e) {
 
         Map<String, String> erros = new HashMap<>();
 
@@ -36,7 +37,7 @@ public class ExceptionGlobalHandler {
         });
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .body(erros);
+                .body(ErrorResponse.deValidacao(HttpStatus.BAD_REQUEST, erros));
 
     }
 }
