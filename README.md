@@ -102,11 +102,24 @@ Testando:
   "timestamp": "2026-05-21T01:30:00"
 }
 ```
-##  Frontend
+##  Arquitetura do Projeto
 
 Interface web desenvolvida em React.
 
 🔗 Frontend: https://github.com/GiovanniCainelli/VetNelli-Front
+
+Principais Funcionalidades: 
+
+- Cadastro de consultas veterinárias
+- Listagem de consultas cadastradas
+- Busca de consultas pelo nome do responsável
+- Edição de consultas em tempo real
+- Atualização de status da consulta
+- Exclusão de consultas
+- Validação de formulários
+- Exibição de mensagens de erro da API
+- Interface responsiva para desktop e dispositivos móveis
+- Integração com API REST desenvolvida em Spring Boot
 
 ---
 
