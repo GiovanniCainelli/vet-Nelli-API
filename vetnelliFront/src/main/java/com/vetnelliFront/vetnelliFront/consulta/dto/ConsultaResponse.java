@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 
-import com.vetnelliFront.vetnelliFront.consulta.enums.IdadePet;
-import com.vetnelliFront.vetnelliFront.consulta.enums.Status;
+import com.vetnelliFront.vetnelliFront.enums.IdadePet;
+import com.vetnelliFront.vetnelliFront.enums.Status;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

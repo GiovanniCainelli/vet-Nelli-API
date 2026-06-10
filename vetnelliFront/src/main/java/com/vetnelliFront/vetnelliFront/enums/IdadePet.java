@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.consulta.enums;
+package com.vetnelliFront.vetnelliFront.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 

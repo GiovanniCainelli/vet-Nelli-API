@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.consulta.exception;
+package com.vetnelliFront.vetnelliFront.exception;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

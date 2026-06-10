@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vetnelliFront.vetnelliFront.consulta.dto.ConsultaRequest;
 import com.vetnelliFront.vetnelliFront.consulta.dto.ConsultaResponse;
 import com.vetnelliFront.vetnelliFront.consulta.entity.ConsultaEntity;
-import com.vetnelliFront.vetnelliFront.consulta.enums.Status;
-import com.vetnelliFront.vetnelliFront.consulta.mapper.ConsultaMapper;
 import com.vetnelliFront.vetnelliFront.consulta.service.ConsultaService;
+import com.vetnelliFront.vetnelliFront.enums.Status;
+import com.vetnelliFront.vetnelliFront.mapper.ConsultaMapper;
 
 import jakarta.validation.Valid;
 

@@ -2,7 +2,7 @@ package com.vetnelliFront.vetnelliFront.consulta.dto;
 
 import java.time.LocalDateTime;
 
-import com.vetnelliFront.vetnelliFront.consulta.enums.IdadePet;
+import com.vetnelliFront.vetnelliFront.enums.IdadePet;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;

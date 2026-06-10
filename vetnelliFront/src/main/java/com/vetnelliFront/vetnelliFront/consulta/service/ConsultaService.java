@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.vetnelliFront.vetnelliFront.consulta.entity.ConsultaEntity;
-import com.vetnelliFront.vetnelliFront.consulta.enums.Status;
-import com.vetnelliFront.vetnelliFront.consulta.exception.ConsultaException;
-import com.vetnelliFront.vetnelliFront.consulta.exception.NotFoundException;
 import com.vetnelliFront.vetnelliFront.consulta.repository.ConsultaRepository;
+import com.vetnelliFront.vetnelliFront.enums.Status;
+import com.vetnelliFront.vetnelliFront.exception.ConsultaException;
+import com.vetnelliFront.vetnelliFront.exception.NotFoundException;
 
 @Service
 public class ConsultaService {

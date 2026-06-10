@@ -3,7 +3,7 @@ package com.vetnelliFront.vetnelliFront.usuario.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.vetnelliFront.vetnelliFront.consulta.enums.Role;
+import com.vetnelliFront.vetnelliFront.enums.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
