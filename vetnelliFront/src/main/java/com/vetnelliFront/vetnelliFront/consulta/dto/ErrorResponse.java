@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.dto;
+package com.vetnelliFront.vetnelliFront.consulta.dto;
 
 import java.time.LocalDateTime;
 import java.util.Map;

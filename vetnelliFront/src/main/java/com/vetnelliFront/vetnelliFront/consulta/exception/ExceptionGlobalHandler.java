@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.exception;
+package com.vetnelliFront.vetnelliFront.consulta.exception;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.vetnelliFront.vetnelliFront.dto.ErrorResponse;
+import com.vetnelliFront.vetnelliFront.consulta.dto.ErrorResponse;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
 

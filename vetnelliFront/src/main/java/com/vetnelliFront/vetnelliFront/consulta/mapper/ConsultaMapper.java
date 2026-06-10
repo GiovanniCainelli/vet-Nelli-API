@@ -1,13 +1,13 @@
-package com.vetnelliFront.vetnelliFront.mapper;
+package com.vetnelliFront.vetnelliFront.consulta.mapper;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.vetnelliFront.vetnelliFront.dto.ConsultaRequest;
-import com.vetnelliFront.vetnelliFront.dto.ConsultaResponse;
-import com.vetnelliFront.vetnelliFront.entity.ConsultaEntity;
-import com.vetnelliFront.vetnelliFront.enums.Status;
+import com.vetnelliFront.vetnelliFront.consulta.dto.ConsultaRequest;
+import com.vetnelliFront.vetnelliFront.consulta.dto.ConsultaResponse;
+import com.vetnelliFront.vetnelliFront.consulta.entity.ConsultaEntity;
+import com.vetnelliFront.vetnelliFront.consulta.enums.Status;
 
 @Component
 public class ConsultaMapper {

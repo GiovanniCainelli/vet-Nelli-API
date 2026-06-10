@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.exception;
+package com.vetnelliFront.vetnelliFront.consulta.exception;
 
 public class ConsultaException extends RuntimeException{
     

@@ -11,10 +11,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.vetnelliFront.vetnelliFront.entity.ConsultaEntity;
-import com.vetnelliFront.vetnelliFront.exception.ConsultaException;
-import com.vetnelliFront.vetnelliFront.exception.NotFoundException;
-import com.vetnelliFront.vetnelliFront.repository.ConsultaRepository;
+
+import com.vetnelliFront.vetnelliFront.consulta.entity.ConsultaEntity;
+import com.vetnelliFront.vetnelliFront.consulta.exception.ConsultaException;
+import com.vetnelliFront.vetnelliFront.consulta.exception.NotFoundException;
+import com.vetnelliFront.vetnelliFront.consulta.repository.ConsultaRepository;
+import com.vetnelliFront.vetnelliFront.consulta.service.ConsultaService;
 
 @ExtendWith(MockitoExtension.class)
 public class ConsultaServiceTest {

@@ -1,16 +1,15 @@
-package com.vetnelliFront.vetnelliFront.service;
+package com.vetnelliFront.vetnelliFront.consulta.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.vetnelliFront.vetnelliFront.entity.ConsultaEntity;
-import com.vetnelliFront.vetnelliFront.exception.ConsultaException;
-import com.vetnelliFront.vetnelliFront.exception.NotFoundException;
-import com.vetnelliFront.vetnelliFront.repository.ConsultaRepository;
-
-import com.vetnelliFront.vetnelliFront.enums.Status;
+import com.vetnelliFront.vetnelliFront.consulta.entity.ConsultaEntity;
+import com.vetnelliFront.vetnelliFront.consulta.enums.Status;
+import com.vetnelliFront.vetnelliFront.consulta.exception.ConsultaException;
+import com.vetnelliFront.vetnelliFront.consulta.exception.NotFoundException;
+import com.vetnelliFront.vetnelliFront.consulta.repository.ConsultaRepository;
 
 @Service
 public class ConsultaService {

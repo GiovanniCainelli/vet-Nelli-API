@@ -1,23 +1,25 @@
-package com.vetnelliFront.vetnelliFront.dto;
+package com.vetnelliFront.vetnelliFront.consulta.entity;
 
-import com.vetnelliFront.vetnelliFront.enums.Status;
+
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.vetnelliFront.vetnelliFront.enums.IdadePet;
+import com.vetnelliFront.vetnelliFront.consulta.enums.IdadePet;
+import com.vetnelliFront.vetnelliFront.consulta.enums.Status;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Document(collection = "Consultas" )
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-
-public class ConsultaResponse {
+public class ConsultaEntity {
     @Id
     private String id;
     private String nomePet;
