@@ -14,8 +14,8 @@ public class ConsultaMapper {
 
     public ConsultaEntity toEntity(ConsultaRequest request) {
 
-        return ConsultaEntity.builder().nomePet(request.getNomePet()).idadePet(request.getIdadePet())
-                .nomeDono(request.getNomeDono()).motivo(request.getMotivo()).dataConsulta(request.getDataConsulta())
+        return ConsultaEntity.builder().nomePet(request.nomePet()).idadePet(request.idadePet())
+                .nomeDono(request.nomeDono()).motivo(request.motivo()).dataConsulta(request.dataConsulta())
                 .status(Status.AGENDADA).build();
 
     }
@@ -35,11 +35,11 @@ public class ConsultaMapper {
     }
 
     public void toUpdateEntity(ConsultaEntity entity, ConsultaRequest request) {
-        entity.setNomePet(request.getNomePet());
-        entity.setNomeDono(request.getNomeDono());
-        entity.setDataConsulta(request.getDataConsulta());
-        entity.setIdadePet(request.getIdadePet());
-        entity.setMotivo(request.getMotivo());
+        entity.setNomePet(request.nomePet());
+        entity.setNomeDono(request.nomeDono());
+        entity.setDataConsulta(request.dataConsulta());
+        entity.setIdadePet(request.idadePet());
+        entity.setMotivo(request.motivo());
 
     }
 

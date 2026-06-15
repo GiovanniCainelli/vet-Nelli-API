@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.consulta;
+package com.vetnelliFront.vetnelliFront.consulta.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

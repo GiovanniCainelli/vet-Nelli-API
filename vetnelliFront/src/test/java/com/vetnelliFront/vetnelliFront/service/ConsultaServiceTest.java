@@ -12,8 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.vetnelliFront.vetnelliFront.consulta.ConsultaRepository;
 import com.vetnelliFront.vetnelliFront.consulta.entity.ConsultaEntity;
+import com.vetnelliFront.vetnelliFront.consulta.repository.ConsultaRepository;
 import com.vetnelliFront.vetnelliFront.consulta.service.ConsultaService;
 import com.vetnelliFront.vetnelliFront.exception.ConsultaException;
 import com.vetnelliFront.vetnelliFront.exception.NotFoundException;
