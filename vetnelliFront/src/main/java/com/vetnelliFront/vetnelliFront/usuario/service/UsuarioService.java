@@ -11,12 +11,18 @@ import com.vetnelliFront.vetnelliFront.exception.NotFoundException;
 import com.vetnelliFront.vetnelliFront.usuario.entity.UsuarioEntity;
 import com.vetnelliFront.vetnelliFront.usuario.repository.UsuarioRepository;
 
+import com.vetnelliFront.vetnelliFront.auth.service.AuthService;
+
+// verificar senha ( criar hashCode e Encode)
+
 @Service
 public class UsuarioService {
     private final UsuarioRepository repository;
+    private final AuthService authService;
 
-    public UsuarioService(UsuarioRepository repository) {
+    public UsuarioService(UsuarioRepository repository, AuthService authService) {
         this.repository = repository;
+        this.authService = authService;
     }
 
     public UsuarioEntity buscarUsuarioId(String id) {
@@ -32,15 +38,10 @@ public class UsuarioService {
         return usuarioBuscado;
     }
 
-    public Optional<UsuarioEntity> emailExisteOptional(String email) {
-        Optional<UsuarioEntity> usuarioBuscado = repository.findByEmail(email);
-
-        return usuarioBuscado;
-    }
-
+    
     public UsuarioEntity cadastrarConsulta(UsuarioEntity usuarioEntity) {
         String email = usuarioEntity.getEmail();
-        Optional<UsuarioEntity> usuarioBuscado = emailExisteOptional(email);
+        Optional<UsuarioEntity> usuarioBuscado = authService.emailExisteOptional(email);
 
         if (usuarioBuscado.isPresent()) {
             throw new EmailExistenteException("Email já existente");
@@ -62,5 +63,4 @@ public class UsuarioService {
         repository.delete(usuarioBuscado);
     }
 
-    // validar email e se ja existe no sistema
 }
