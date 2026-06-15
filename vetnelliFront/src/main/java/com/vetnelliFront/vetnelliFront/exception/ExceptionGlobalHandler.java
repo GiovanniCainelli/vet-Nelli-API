@@ -5,11 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.vetnelliFront.vetnelliFront.consulta.dto.ErrorResponse;
+
+import io.micrometer.core.ipc.http.HttpSender.Response;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
@@ -39,5 +42,11 @@ public class ExceptionGlobalHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponse.deValidacao(HttpStatus.BAD_REQUEST, erros));
 
+    }
+
+    @ExceptionHandler(EmailExistenteException.class)
+    public ResponseEntity<ErrorResponse> tratarEmailExistenteException(EmailExistenteException e){
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponse.de(HttpStatus.NOT_FOUND, e.getMessage()));
     }
 }
