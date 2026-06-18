@@ -8,18 +8,34 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record ConsultaRequest(
 
-        @NotBlank(message = "Nome do pet é obrigatório") @Size(min = 2, max = 50, message = "Nome do pet deve ter entre 2 e 50 caracteres") String nomePet,
+@Data
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
 
-        @NotNull(message = "Selecione a idade do pet") IdadePet idadePet,
+public class ConsultaRequest {
+        @NotBlank(message = "Nome do pet é obrigatório")
+        @Size(min = 2, max = 50, message = "Nome do pet deve ter entre 2 e 50 caracteres")
+        private String nomePet;
 
-        @NotBlank(message = "Nome do dono é obrigatório") @Size(min = 2, max = 50, message = "Nome do dono deve ter entre 2 e 50 caracteres") String nomeDono,
+        @NotNull(message = "Selecione a idade do pet")
+        private IdadePet idadePet;
 
-        @NotBlank(message = "Motivo é obrigatório") @Size(min = 2, max = 50, message = "Motivo deve ter entre 2 e 50 caracteres") String motivo,
+        @NotBlank(message = "Nome do dono é obrigatório")
+        @Size(min = 2, max = 50, message = "Nome do dono deve ter entre 2 e 50 caracteres")
+        private String nomeDono;
 
-        @NotNull(message = "Data da consulta é obrigatória") @Future(message = "Data inválida, não é possível agendar.") LocalDateTime dataConsulta
+        @NotBlank(message = "Motivo é obrigatório")
+        @Size(min = 2, max = 50, message = "Motivo deve ter entre 2 e 50 caracteres")
+        private String motivo;
 
-) {
+        @NotNull(message = "Data da consulta é obrigatória")
+        @Future(message = "Data inválida, não é possível agendar.")
+        private LocalDateTime dataConsulta;
 }
