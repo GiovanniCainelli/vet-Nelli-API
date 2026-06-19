@@ -5,23 +5,19 @@ import java.util.Optional;
 
 import com.vetnelliFront.vetnelliFront.usuario.entity.UsuarioEntity;
 
-import com.vetnelliFront.vetnelliFront.usuario.repository.UsuarioRepository;
+
+import com.vetnelliFront.vetnelliFront.usuario.service.UsuarioService;
 
 public class AuthService {
 
-    private final UsuarioRepository repository;
+    private final UsuarioService service;
 
-    public AuthService(UsuarioRepository repository){
-        this.repository = repository;
+    public AuthService(UsuarioService service){
+        this.service = service;
     }
 
 
-    public Optional<UsuarioEntity> emailExisteOptional(String email) {
-        Optional<UsuarioEntity> usuarioBuscado = repository.findByEmail(email);
-
-        return usuarioBuscado;
-    }
-
+    
     
 
 
