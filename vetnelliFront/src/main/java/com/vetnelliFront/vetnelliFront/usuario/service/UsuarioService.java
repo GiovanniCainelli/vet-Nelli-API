@@ -1,31 +1,22 @@
 package com.vetnelliFront.vetnelliFront.usuario.service;
-
-import java.lang.StackWalker.Option;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.vetnelliFront.vetnelliFront.consulta.entity.ConsultaEntity;
-import com.vetnelliFront.vetnelliFront.exception.EmailExistenteException;
 import com.vetnelliFront.vetnelliFront.exception.EmailExistenteException;
 import com.vetnelliFront.vetnelliFront.exception.NotFoundException;
-import com.vetnelliFront.vetnelliFront.mapper.ConsultaMapper;
 import com.vetnelliFront.vetnelliFront.usuario.entity.UsuarioEntity;
 import com.vetnelliFront.vetnelliFront.usuario.repository.UsuarioRepository;
 
-import com.vetnelliFront.vetnelliFront.auth.service.AuthService;
+import lombok.RequiredArgsConstructor;
 
 // verificar senha ( criar hashCode e Encode)
 
 @Service
+@RequiredArgsConstructor
 public class UsuarioService {
     private final UsuarioRepository repository;
-    private final ConsultaMapper mapper;
 
-    public UsuarioService(UsuarioRepository repository, ConsultaMapper mapper) {
-        this.repository = repository;
-        this.mapper = mapper;
-    }
 
     public UsuarioEntity buscarUsuarioId(String id) {
 
@@ -59,11 +50,11 @@ public class UsuarioService {
 
     public UsuarioEntity atualizarUsuario(String id, UsuarioEntity usuarioEntity) {
 
-        UsuarioEntity usuarioBuscado = buscarUsuarioId(id);
+        //validar tokens
 
         
 
-        return usuarioBuscado;
+        return repository.save(usuarioEntity);
     }
 
     public void DeletarUsuario(String id) {
