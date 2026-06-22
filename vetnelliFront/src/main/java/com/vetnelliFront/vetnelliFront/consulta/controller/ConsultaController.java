@@ -12,6 +12,7 @@ import com.vetnelliFront.vetnelliFront.enums.Status;
 import com.vetnelliFront.vetnelliFront.mapper.ConsultaMapper;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 import java.net.URI;
 import java.util.List;
@@ -29,15 +30,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/consultas")
+@RequiredArgsConstructor
 public class ConsultaController {
 
     private final ConsultaService service;
     private final ConsultaMapper mapper;
 
-    public ConsultaController(ConsultaService service, ConsultaMapper mapper) {
-        this.service = service;
-        this.mapper = mapper;
-    }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<ConsultaResponse> buscarConsultaPorId(@PathVariable String id) {
