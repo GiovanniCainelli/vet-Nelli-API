@@ -10,9 +10,6 @@ import com.vetnelliFront.vetnelliFront.consulta.entity.ConsultaEntity;
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {
 
-    public LoginResponse toResponse(ConsultaEntity entity);
-
-    public LoginRequest toEntity(ConsultaRequest request);
 
     
 }
