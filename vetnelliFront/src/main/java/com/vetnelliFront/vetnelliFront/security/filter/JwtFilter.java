@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.auth.filter;
+package com.vetnelliFront.vetnelliFront.security.filter;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.mongodb.lang.NonNull;
-import com.vetnelliFront.vetnelliFront.auth.service.JwtService;
+import com.vetnelliFront.vetnelliFront.security.service.JwtService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

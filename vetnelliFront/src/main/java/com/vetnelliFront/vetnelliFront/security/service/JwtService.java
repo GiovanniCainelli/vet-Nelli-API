@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.auth.service;
+package com.vetnelliFront.vetnelliFront.security.service;
 
 import java.security.Key;
 import java.util.Date;
@@ -17,40 +17,40 @@ import io.jsonwebtoken.security.Keys;
 public class JwtService {
 
     @Value("${jwt.secret}")
-    private String secret; 
+    private String secret;
 
     @Value("${jwt.expiration}")
     private long expiration;
 
-    public String gerarToken(UserDetails userDetails) { 
+    public String gerarToken(UserDetails userDetails) {
         return Jwts.builder()
-                .setSubject(userDetails.getUsername()) 
+                .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getSignKey(), SignatureAlgorithm.HS256) 
-                .compact(); 
+                .signWith(getSignKey(), SignatureAlgorithm.HS256)
+                .compact();
     }
 
     private Key getSignKey() {
-        byte[] keyBytes = secret.getBytes(); 
+        byte[] keyBytes = secret.getBytes();
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    private Claims extrairTodosClaims(String token) { 
+    private Claims extrairTodosClaims(String token) {
         return Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token).getBody();
     }
 
-    private <T> T extrairClaim(String token, Function<Claims, T> claimsResolver) { 
+    private <T> T extrairClaim(String token, Function<Claims, T> claimsResolver) {
         Claims claims = extrairTodosClaims(token);
         return claimsResolver.apply(claims);
     }
 
     @SuppressWarnings("null")
-    private Date extrairExpiracao(String token) { 
+    private Date extrairExpiracao(String token) {
         return extrairClaim(token, Claims::getExpiration);
     }
 
-    private boolean tokenExpirado(String token) { 
+    private boolean tokenExpirado(String token) {
         return extrairExpiracao(token).before(new Date());
     }
 

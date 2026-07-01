@@ -1,4 +1,4 @@
-package com.vetnelliFront.vetnelliFront.usuario.service;
+package com.vetnelliFront.vetnelliFront.security.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
