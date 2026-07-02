@@ -1,6 +1,8 @@
 package com.vetnelliFront.vetnelliFront.usuario.service;
+
 import java.util.Optional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vetnelliFront.vetnelliFront.exception.EmailExistenteException;
@@ -16,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UsuarioService {
     private final UsuarioRepository repository;
-
+    private final PasswordEncoder passwordEncoder;
 
     public UsuarioEntity buscarUsuarioId(String id) {
 
@@ -40,9 +42,11 @@ public class UsuarioService {
 
     public UsuarioEntity cadastrarUsuario(UsuarioEntity usuarioEntity) {
         String email = usuarioEntity.getEmail();
-        if(emailJaExiste(email).isPresent()){
+        if (emailJaExiste(email).isPresent()) {
             throw new EmailExistenteException("Email já cadastrado");
-        }else{
+        } else {
+
+            usuarioEntity.setSenha(passwordEncoder.encode(usuarioEntity.getSenha()));
             return repository.save(usuarioEntity);
 
         }
@@ -50,9 +54,7 @@ public class UsuarioService {
 
     public UsuarioEntity atualizarUsuario(String id, UsuarioEntity usuarioEntity) {
 
-        //validar tokens
-
-        
+        // validar tokens
 
         return repository.save(usuarioEntity);
     }

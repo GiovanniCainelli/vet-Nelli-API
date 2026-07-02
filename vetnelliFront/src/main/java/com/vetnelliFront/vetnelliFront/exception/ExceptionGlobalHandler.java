@@ -47,6 +47,6 @@ public class ExceptionGlobalHandler {
     @ExceptionHandler(EmailExistenteException.class)
     public ResponseEntity<ErrorResponse> tratarEmailExistenteException(EmailExistenteException e){
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponse.de(HttpStatus.NOT_FOUND, e.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponse.de(HttpStatus.NOT_FOUND, e.getMessage()));
     }
 }
