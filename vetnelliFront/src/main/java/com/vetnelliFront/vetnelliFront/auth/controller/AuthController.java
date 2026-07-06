@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +21,11 @@ import com.vetnelliFront.vetnelliFront.usuario.entity.UsuarioEntity;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
+ 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
-public class AuthController {// crio um post devolvendo login response, valido o request nos parametros e
-                             // utilizo o metodo de login. devolvo o ok.
+public class AuthController {
     private final AuthService authService;
     private final UsuarioMapper mapper;
 
@@ -39,11 +39,8 @@ public class AuthController {// crio um post devolvendo login response, valido o
     public ResponseEntity<RegistrarResponse> registrar(@Valid @RequestBody RegistrarRequest request) {
 
         UsuarioEntity entity = mapper.toEntity(request);
-        UsuarioEntity entitySalva = authService.registrar(entity);
-        RegistrarResponse response = mapper.toResponse(entitySalva);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(entitySalva.getId())
-                .toUri();
-
+        RegistrarResponse response = authService.registrar(entity);
+        URI uri = URI.create("/auth/register/" + entity.getId());
         return ResponseEntity.created(uri).body(response);
     }
 

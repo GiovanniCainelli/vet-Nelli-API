@@ -10,5 +10,4 @@ import lombok.Getter;
 public class RegistrarResponse {
     private String token;
     private String email;
-    private String senha;
 }

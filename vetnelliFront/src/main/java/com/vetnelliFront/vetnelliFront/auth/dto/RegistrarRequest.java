@@ -1,34 +1,36 @@
-package com.vetnelliFront.vetnelliFront.auth.dto;
+    package com.vetnelliFront.vetnelliFront.auth.dto;
 
-import javax.management.relation.Role;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class RegistrarRequest {
-    @NotBlank(message = "Nome é obrigatório.")
-    @Size(min = 2, max = 50, message = "O nome deve ter entre 2 e 50 caracteres.")
+    import com.vetnelliFront.vetnelliFront.enums.Role;
 
-    private String nome;
+    import jakarta.validation.constraints.Email;
+    import jakarta.validation.constraints.NotBlank;
+    import jakarta.validation.constraints.NotNull;
+    import jakarta.validation.constraints.Size;
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
 
-    @NotNull(message = "Selecione a função do colaborador")
-    private Role role;
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class RegistrarRequest {
+        @NotBlank(message = "Nome é obrigatório.")
+        @Size(min = 2, max = 50, message = "O nome deve ter entre 2 e 50 caracteres.")
 
-    @NotBlank(message = "Email é obrigatório.")
-    @Email(message = "Formato de Email inválido")
+        private String nome;
 
-    private String email;
+        @NotNull(message = "Selecione a função do colaborador")
+        private Role role;
 
-    @NotBlank(message = "Senha é obrigatória")
-    @Size(min = 6, message = "Senha deve ter no minímo 6 caracteres")
+        @NotBlank(message = "Email é obrigatório.")
+        @Email(message = "Formato de Email inválido")
 
-    private String senha;
-}
+        private String email;
+
+        @NotBlank(message = "Senha é obrigatória")
+        @Size(min = 6, message = "Senha deve ter no minímo 6 caracteres")
+
+        private String senha;
+    }

@@ -27,22 +27,23 @@ public class AuthService {
     private final UsuarioDetailsService usuarioDetailsService;
     private final PasswordEncoder passwordEncoder;
 
-
-    public LoginResponse login(LoginRequest request) { // autentico
+    public LoginResponse login(LoginRequest request) {
         authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getSenha()));
-        UserDetails userDetails = usuarioDetailsService.loadUserByUsername(request.getEmail()); // trago o usuario
-        String token = jwtService.gerarToken(userDetails); // gero token
+        UserDetails userDetails = usuarioDetailsService.loadUserByUsername(request.getEmail());
+        String token = jwtService.gerarToken(userDetails);
 
-        return LoginResponse.builder().token(token).build(); // retorno
+        return LoginResponse.builder().token(token).build();
     }
 
-    public  UsuarioEntity registrar(UsuarioEntity entity){ // hash,salva,token, retorna
+    public RegistrarResponse registrar(UsuarioEntity entity) {
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
-        usuarioRepository.save(entity);
-        return entity;
-
-        
+        UsuarioEntity salvo = usuarioRepository.save(entity);
+        String token = jwtService.gerarToken(salvo);
+        return RegistrarResponse.builder()
+                .token(token)
+                .email(salvo.getEmail())
+                .build();
     }
 
 }
