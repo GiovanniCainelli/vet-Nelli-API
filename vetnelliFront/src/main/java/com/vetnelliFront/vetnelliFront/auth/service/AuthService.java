@@ -1,7 +1,13 @@
 package com.vetnelliFront.vetnelliFront.auth.service;
 
-import com.vetnelliFront.vetnelliFront.usuario.repository.UsuarioRepository;
+import com.vetnelliFront.vetnelliFront.usuario.service.UsuarioService;
+
+import jakarta.validation.constraints.Email;
+
+import java.util.Optional;
+
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.configurers.PasswordManagementConfigurer;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,29 +22,40 @@ import com.vetnelliFront.vetnelliFront.security.service.JwtService;
 import com.vetnelliFront.vetnelliFront.security.service.UsuarioDetailsService;
 import com.vetnelliFront.vetnelliFront.usuario.entity.UsuarioEntity;
 
+import com.vetnelliFront.vetnelliFront.exception.EmailExistenteException;
+import com.vetnelliFront.vetnelliFront.exception.LoginInvalidoException;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-    private final UsuarioRepository usuarioRepository;
+    private final UsuarioService service;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final UsuarioDetailsService usuarioDetailsService;
     private final PasswordEncoder passwordEncoder;
 
     public LoginResponse login(LoginRequest request) {
-        authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getSenha()));
-        UserDetails userDetails = usuarioDetailsService.loadUserByUsername(request.getEmail());
-        String token = jwtService.gerarToken(userDetails);
 
-        return LoginResponse.builder().token(token).build();
+        try {
+            authenticationManager
+                    .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getSenha()));
+            UserDetails userDetails = usuarioDetailsService.loadUserByUsername(request.getEmail());
+            String token = jwtService.gerarToken(userDetails);
+
+            return LoginResponse.builder().token(token).build();
+        } catch (BadCredentialsException e) {
+            throw new LoginInvalidoException("Email ou Senha Inválidos");
+        }
+
     }
 
     public RegistrarResponse registrar(UsuarioEntity entity) {
+        service.emailExistente(entity.getEmail());
+
         entity.setSenha(passwordEncoder.encode(entity.getSenha()));
-        UsuarioEntity salvo = usuarioRepository.save(entity);
+        UsuarioEntity salvo = service.cadastrarUsuario(entity);
         String token = jwtService.gerarToken(salvo);
         return RegistrarResponse.builder()
                 .token(token)

@@ -12,8 +12,6 @@ import com.vetnelliFront.vetnelliFront.usuario.repository.UsuarioRepository;
 
 import lombok.RequiredArgsConstructor;
 
-// verificar senha ( criar hashCode e Encode)
-
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {
@@ -33,7 +31,7 @@ public class UsuarioService {
         return usuarioBuscado;
     }
 
-    public Optional<UsuarioEntity> emailJaExiste(String email) {
+    public Optional<UsuarioEntity> emailExistente(String email) {
         Optional<UsuarioEntity> usuarioOptional = repository.findByEmail(email);
 
         return usuarioOptional;
@@ -42,7 +40,7 @@ public class UsuarioService {
 
     public UsuarioEntity cadastrarUsuario(UsuarioEntity usuarioEntity) {
         String email = usuarioEntity.getEmail();
-        if (emailJaExiste(email).isPresent()) {
+        if (emailExistente(email).isPresent()) {
             throw new EmailExistenteException("Email já cadastrado");
         } else {
 

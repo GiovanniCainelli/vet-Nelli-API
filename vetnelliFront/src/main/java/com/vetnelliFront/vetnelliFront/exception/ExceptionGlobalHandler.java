@@ -16,6 +16,8 @@ import io.micrometer.core.ipc.http.HttpSender.Response;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
+import io.jsonwebtoken.JwtException;
+
 @RestControllerAdvice
 public class ExceptionGlobalHandler {
 
@@ -45,8 +47,21 @@ public class ExceptionGlobalHandler {
     }
 
     @ExceptionHandler(EmailExistenteException.class)
-    public ResponseEntity<ErrorResponse> tratarEmailExistenteException(EmailExistenteException e){
+    public ResponseEntity<ErrorResponse> tratarEmailExistenteException(EmailExistenteException e) {
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponse.de(HttpStatus.NOT_FOUND, e.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponse.de(HttpStatus.NOT_FOUND, e.getMessage()));
+    }
+
+    @ExceptionHandler(LoginInvalidoException.class)
+    public ResponseEntity<ErrorResponse> tratarLoginInvalidoException(LoginInvalidoException e) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ErrorResponse.de(HttpStatus.UNAUTHORIZED, e.getMessage()));
+    }
+
+    @ExceptionHandler(JwtException.class)
+    public ResponseEntity<ErrorResponse> tratarJwtException(JwtException e) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ErrorResponse.de(HttpStatus.UNAUTHORIZED, e.getMessage()));
     }
 }
