@@ -16,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UsuarioService {
     private final UsuarioRepository repository;
-    private final PasswordEncoder passwordEncoder;
 
     public UsuarioEntity buscarUsuarioId(String id) {
 
@@ -43,8 +42,6 @@ public class UsuarioService {
         if (emailExistente(email).isPresent()) {
             throw new EmailExistenteException("Email já cadastrado");
         } else {
-
-            usuarioEntity.setSenha(passwordEncoder.encode(usuarioEntity.getSenha()));
             return repository.save(usuarioEntity);
 
         }
