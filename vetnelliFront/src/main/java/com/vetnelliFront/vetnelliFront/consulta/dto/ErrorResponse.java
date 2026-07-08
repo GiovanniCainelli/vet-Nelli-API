@@ -3,7 +3,6 @@ package com.vetnelliFront.vetnelliFront.consulta.dto;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-import org.springframework.boot.micrometer.observation.autoconfigure.ObservationProperties.Http;
 import org.springframework.http.HttpStatus;
 
 import lombok.Builder;

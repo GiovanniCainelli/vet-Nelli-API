@@ -2,27 +2,22 @@ package com.vetnelliFront.vetnelliFront.auth.service;
 
 import com.vetnelliFront.vetnelliFront.usuario.service.UsuarioService;
 
-import jakarta.validation.constraints.Email;
-
-import java.util.Optional;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.web.configurers.PasswordManagementConfigurer;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vetnelliFront.vetnelliFront.auth.dto.LoginRequest;
 import com.vetnelliFront.vetnelliFront.auth.dto.LoginResponse;
-import com.vetnelliFront.vetnelliFront.auth.dto.RegistrarRequest;
+
 import com.vetnelliFront.vetnelliFront.auth.dto.RegistrarResponse;
 import com.vetnelliFront.vetnelliFront.security.service.JwtService;
 import com.vetnelliFront.vetnelliFront.security.service.UsuarioDetailsService;
 import com.vetnelliFront.vetnelliFront.usuario.entity.UsuarioEntity;
 
-import com.vetnelliFront.vetnelliFront.exception.EmailExistenteException;
 import com.vetnelliFront.vetnelliFront.exception.LoginInvalidoException;
 
 import lombok.RequiredArgsConstructor;

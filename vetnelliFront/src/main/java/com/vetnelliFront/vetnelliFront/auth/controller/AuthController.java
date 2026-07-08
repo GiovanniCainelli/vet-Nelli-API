@@ -3,13 +3,11 @@ package com.vetnelliFront.vetnelliFront.auth.controller;
 import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.vetnelliFront.vetnelliFront.auth.dto.LoginRequest;
 import com.vetnelliFront.vetnelliFront.auth.dto.LoginResponse;
@@ -21,7 +19,7 @@ import com.vetnelliFront.vetnelliFront.usuario.entity.UsuarioEntity;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
- 
+
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
