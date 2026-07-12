@@ -4,12 +4,15 @@ API REST desenvolvida com Java + Spring Boot para gerenciamento de consultas vet
 
 ## 🚀 Tecnologias utilizadas
 
-* Java 17
+* Java 25
 * Spring Boot
 * Spring Web
+* Spring Security
+* JWT (JJWT)
 * Spring Data MongoDB
 * MongoDB Atlas
 * Lombok
+* MapStruct
 * Jakarta Validation
 * JUnit 5
 * Mockito
@@ -21,29 +24,62 @@ API REST desenvolvida com Java + Spring Boot para gerenciamento de consultas vet
 
 ```text
 src/main/java
-├── controller
-├── service
-├── repository
-├── mapper
-├── dto
-├── entity
+├── auth
+├── config
+├── consulta
 ├── enums
 ├── exception
+├── mapper
+├── security
+├── usuario
 ```
 
 ---
 
 ## ⚙️ Funcionalidades
 
-*  Cadastro de consultas
-*  Busca de consulta por ID
-*  Listagem de consultas
+### Autenticação
+* Cadastro de usuários
+* Login com autenticação via JWT
+* Proteção de rotas com Spring Security (sessões stateless)
+
+### Consultas
+* Cadastro de consultas
+* Busca de consulta por ID
+* Listagem de consultas
 * Atualização de consultas
-*  Exclusão de consultas
+* Exclusão de consultas
 * Atualização de status da consulta
+
+### Geral
 * Validações de dados
-*  Tratamento global de exceções
+* Tratamento global de exceções
 ---
+
+## 🔐 Autenticação
+
+### POST `/auth/login`
+
+```json
+{
+  "email": "usuario@email.com",
+  "senha": "123456"
+}
+```
+
+### Resposta
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+As demais rotas exigem o header:
+
+```
+Authorization: Bearer {token}
+```
 
 ## 🧪 Testes
 
@@ -93,13 +129,45 @@ Testando:
 
 ---
 
-## ❌ Exemplo de erro
+## ❌ Exemplos de erro
+
+### Erro de validação (400)
 
 ```json
 {
   "status": 400,
   "message": "Data da consulta inválida",
   "timestamp": "2026-05-21T01:30:00"
+}
+```
+
+### Erro de autenticação (401)
+
+```json
+{
+  "status": 401,
+  "message": "Credenciais inválidas",
+  "timestamp": "2026-07-12T14:22:00"
+}
+```
+
+### Erro de token expirado ou inválido (401)
+
+```json
+{
+  "status": 401,
+  "message": "Token inválido ou expirado",
+  "timestamp": "2026-07-12T14:25:00"
+}
+```
+
+### Recurso não encontrado (404)
+
+```json
+{
+  "status": 404,
+  "message": "Consulta não encontrada",
+  "timestamp": "2026-07-12T14:30:00"
 }
 ```
 ##  Arquitetura do Projeto
