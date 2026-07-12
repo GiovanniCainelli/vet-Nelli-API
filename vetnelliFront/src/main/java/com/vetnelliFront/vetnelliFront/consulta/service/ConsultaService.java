@@ -40,6 +40,7 @@ public class ConsultaService {
 
     public ConsultaEntity cadastrarConsulta(ConsultaEntity consultaEntity) {
 
+        consultaEntity.setStatus(Status.AGENDADA);
         validarData(consultaEntity);
 
         return repository.save(consultaEntity);
@@ -70,8 +71,6 @@ public class ConsultaService {
             throw new ConsultaException(
                     "Transição inválida: " + statusAtual + " → " + status);
         }
-
-        
 
         consultaBuscada.setStatus(status);
         return repository.save(consultaBuscada);

@@ -45,6 +45,7 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
+    @SuppressWarnings("null")
     private Date extrairExpiracao(String token) {
         return extrairClaim(token, Claims::getExpiration);
     }
@@ -58,6 +59,7 @@ public class JwtService {
         return email.equals(userDetails.getUsername()) && !tokenExpirado(token);
     }
 
+    @SuppressWarnings("null")
     public String extrairEmail(String token) {
         return extrairClaim(token, Claims::getSubject);
     }

@@ -36,7 +36,7 @@ public class ConsultaController {
     private final ConsultaMapper mapper;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ConsultaResponse> buscarConsultaPorId(@PathVariable String id) {
+    public ResponseEntity<ConsultaResponse> buscarConsultaPorId(@PathVariable("id") String id) {
         return ResponseEntity.ok(mapper.toResponse(service.buscarConsultaId(id)));
     }
 
@@ -59,7 +59,7 @@ public class ConsultaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ConsultaResponse> atualizarConsulta(@PathVariable String id,
+    public ResponseEntity<ConsultaResponse> atualizarConsulta(@PathVariable("id") String id,
             @Valid @RequestBody ConsultaRequest request) {
 
         ConsultaEntity consultaBuscada = service.buscarConsultaId(id);
@@ -70,14 +70,14 @@ public class ConsultaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarConsulta(@PathVariable String id) {
+    public ResponseEntity<Void> deletarConsulta(@PathVariable("id") String id) {
         service.deletarConsulta(id);
         return ResponseEntity.noContent().build();
     }
 
     @PatchMapping("/{id}/status")
-    public ResponseEntity<ConsultaResponse> atualizarStatusConsulta(@PathVariable String id,
-            @RequestParam Status status) {
+    public ResponseEntity<ConsultaResponse> atualizarStatusConsulta(@PathVariable("id") String id,
+            @RequestParam("status") Status status) {
         return ResponseEntity.ok(mapper.toResponse(service.atualizarStatusConsulta(id, status)));
     }
 
